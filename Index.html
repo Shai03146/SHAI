@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHAI — Full-Spectrum Digital Agency & Brand Systems</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- KINETIC CURSOR GLOW -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-overlay" id="mobile-overlay">
+    <canvas id="menu-canvas"></canvas>
+
+    <button class="mobile-nav-close-btn" id="mobile-close-btn" aria-label="Close Navigation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="mobile-nav-content">
+      <a href="services.html" class="mobile-nav-link nav-item-close">Services</a>
+      <a href="blog.html" class="mobile-nav-link nav-item-close">Blog</a>
+      <a href="#contact" class="mobile-nav-link mobile-nav-cta nav-item-close">Contact</a>
+    </div>
+  </div>
+
+  <!-- HEADER NAVIGATION -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo-container">
+  <!-- Brand Emblem -->
+  <img src="assets/img/logo.png" alt="SHAI Logo" class="shai-emblem-img">
+  
+  <!-- Text Stack: Name + Tagline -->
+  <div class="brand-text-stack">
+    <span class="brand-wordmark">SHAI</span>
+    <span class="brand-tagline">Built to Outlive the Moment</span>
+  </div>
+</a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu">
+        <li><a href="services.html" class="nav-link">Services</a></li>
+         <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="#contact" class="nav-link nav-link-cta">Contact</a></li>
+      </ul>
+
+      <!-- Mobile Burger Menu Trigger -->
+      <button class="burger-menu-btn" id="burger-btn" aria-label="Toggle Navigation">
+        <div class="burger-bar"></div>
+        <div class="burger-bar"></div>
+        <div class="burger-bar"></div>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <canvas id="hero-canvas"></canvas>
+    <div class="container">
+      <div class="hero-layout">
+        <div>
+          <div class="hero-eyebrow">Full-Spectrum Brand & Digital Infrastructure</div>
+          <h1 class="hero-headline-large">
+            We build brands that <em>command attention.</em>
+          </h1>
+          <p class="hero-subhead">
+            <strong class="shai-inline-brand">SHAI</strong> is a complete brand development agency. We design digital platforms, create physical brand placements, and structure multi-channel marketing to transform how your business appeals to its target audience.
+          </p>
+          <div class="hero-action-group">
+            <a href="services.html" class="btn-primary">
+              Explore Our Capabilities
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Agency Deliverable Overview -->
+        <div class="hero-interactive-card" id="tilt-card">
+          <div class="card-content-inner">
+            <span class="section-label" style="color: var(--color-sky-blue);">WHAT WE BUILD FOR YOUR BUSINESS</span>
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1.25rem;"><span class="shai-inline-brand">SHAI</span> Ecosystem Suite</h3>
+            
+            <div class="card-service-item">
+              <span>WEB PLATFORMS & PORTALS</span>
+              <span class="badge-status">DIGITAL</span>
+            </div>
+            <div class="card-service-item">
+              <span>SOCIAL MEDIA CAMPAIGNS</span>
+              <span class="badge-status">MARKETING</span>
+            </div>
+            <div class="card-service-item">
+              <span>BRAND IDENTITY & LOGOS</span>
+              <span class="badge-status">DESIGN</span>
+            </div>
+            <div class="card-service-item">
+              <span>PHYSICAL CARDS & PLACEMENTS</span>
+              <span class="badge-status">PHYSICAL</span>
+            </div>
+            <div class="card-service-item">
+              <span>CONVERSION & SALES SYSTEMS</span>
+              <span class="badge-status">GROWTH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILED ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-header-block">
+        <span class="section-label">01 // Foundation & Purpose</span>
+        <h2 class="about-title">Why <span class="shai-inline-brand">SHAI</span> exists—and how we elevate your business.</h2>
+      </div>
+
+      <div class="about-story-grid">
+        <div class="story-card">
+          <span class="story-card-number">FOUNDATION // THE GIFT</span>
+          <h3 class="story-card-heading">The Biblical Origin</h3>
+          <p class="story-card-body">
+            As a South African child, the foundation of knowledge, direction, and truth that led to this point comes directly from the Bible. In Hebrew—the primary language of Biblical scripture—<strong class="shai-inline-brand">SHAI (שַׁי)</strong> translates to a <em>gift</em> or an <em>offering</em>. We operate on this exact premise: every solution we deliver is crafted as a high-value contribution to your business's success.
+          </p>
+        </div>
+
+        <div class="story-card">
+          <span class="story-card-number">MISSION // GROWTH</span>
+          <h3 class="story-card-heading">Holistic Brand Building</h3>
+          <p class="story-card-body">
+            A website alone isn't enough to scale a modern business. <span class="shai-inline-brand">SHAI</span> bridges the gap between digital systems and market execution. We combine web engineering, physical branding, social presence, and strategic marketing so your brand connects effortlessly across every touchpoint.
+          </p>
+        </div>
+
+        <div class="story-card">
+          <span class="story-card-number">DOCTRINE // LONGEVITY</span>
+          <h3 class="story-card-heading">Built to Outlive the Moment</h3>
+          <p class="story-card-body">
+            We don't sell short-term visual hype. Whether we are printing physical business cards, designing custom web architectures, or launching social campaigns, every piece of work is structured to build lasting brand equity, command respect, and drive business growth.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-wrapper">
+        <div style="opacity: 0.85;">
+          &copy; All rights reserved by <span class="shai-inline-brand">SHAI</span>. Built to outlive the moment.
+        </div>
+        
+        <div class="footer-socials">
+          <a href="#" class="social-icon-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-icon-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="#" class="social-icon-link" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
