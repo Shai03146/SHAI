@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Inquiry | SHAI — Full-Spectrum Digital Agency</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- EmailJS Integration -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+       emailjs.init({
+         publicKey: "mcx14sxubcUhSmxYb",
+       });
+    })();
+  </script>
+
+  <style>
+    /* Logo Background Customization: Pure White Frame for Dark Logo Icon */
+    .brand-logo-container .shai-emblem-img {
+      background-color: #ffffff;
+      padding: 4px;
+      border-radius: 6px;
+      object-fit: contain;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 36px;
+      height: 36px;
+    }
+
+    /* Page-Specific Contact Styling with Blue Accents */
+    .contact-hero-section {
+      padding: 6rem 0 3rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .contact-grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 2.5rem;
+      padding: 2rem 0 6rem;
+      align-items: start;
+    }
+
+    /* Glass Cards with Subtle Blue Borders */
+    .contact-card {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
+      padding: 2.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 12px 35px rgba(37, 99, 235, 0.2);
+    }
+
+    .contact-detail-group {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .detail-item {
+      padding-left: 1rem;
+      border-left: 3px solid #2563eb;
+      transition: all 0.25s ease;
+    }
+
+    .detail-item:hover {
+      border-left-color: #38bdf8;
+      transform: translateX(4px);
+    }
+
+    .detail-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .detail-value {
+      font-size: 1rem;
+      color: #f1f5f9;
+      font-weight: 500;
+    }
+
+    .detail-value a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .detail-value a:hover {
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+
+    /* Service Chips Selector */
+    .service-chips-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .chip-btn {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .chip-btn:hover {
+      background: rgba(37, 99, 235, 0.3);
+      border-color: #38bdf8;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .chip-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Form Input Fields */
+    .contact-form .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1.5px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      color: #f8fafc;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      background: rgba(15, 23, 42, 1);
+      border-color: #38bdf8;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(37, 99, 235, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Response Guidance Banner */
+    .expectation-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(15, 23, 42, 0.4) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-left: 4px solid #38bdf8;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .expectation-box h4 {
+      margin: 0 0 0.3rem 0;
+      color: #60a5fa;
+      font-size: 0.95rem;
+    }
+
+    .expectation-box p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    /* Status Notifications */
+    .form-status-alert {
+      display: none;
+      padding: 0.85rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .form-status-alert.success {
+      display: block;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+    }
+    .form-status-alert.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(248, 113, 113, 0.4);
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- KINETIC CURSOR GLOW -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-overlay" id="mobile-overlay">
+    <canvas id="menu-canvas"></canvas>
+
+    <button class="mobile-nav-close-btn" id="mobile-close-btn" aria-label="Close Navigation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="mobile-nav-content">
+      <a href="services.html" class="mobile-nav-link nav-item-close">Services</a>
+      <a href="projects.html" class="mobile-nav-link nav-item-close">Projects</a>
+      <a href="blog.html" class="mobile-nav-link nav-item-close">Blog</a>
+      <a href="contact.html" class="mobile-nav-link mobile-nav-cta nav-item-close">Contact</a>
+    </div>
+  </div>
+
+  <!-- HEADER NAVIGATION -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo-container">
+        <!-- Brand Emblem with White Background -->
+        <img src="assets/img/logo.png" alt="SHAI Logo" class="shai-emblem-img">
+        
+        <!-- Text Stack: Name + Tagline -->
+        <div class="brand-text-stack">
+          <span class="brand-wordmark">SHAI</span>
+          <span class="brand-tagline">Built to Outlive the Moment</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu">
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="contact.html" class="nav-link nav-link-cta nav-link-active">Contact</a></li>
+      </ul>
+
+      <!-- Mobile Burger Menu Trigger -->
+      <button class="burger-menu-btn" id="burger-btn" aria-label="Toggle Navigation">
+        <div class="burger-bar"></div>
+        <div class="burger-bar"></div>
+        <div class="burger-bar"></div>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO HEADER SECTION -->
+  <section class="contact-hero-section">
+    <div class="container">
+      <span class="section-label" style="color: #38bdf8;">01 // INITIATE CONSULTATION</span>
+      <h1 class="hero-headline-large" style="margin-top: 0.5rem;">
+        Let's build something <em>extraordinary.</em>
+      </h1>
+      <p class="hero-subhead" style="margin: 0.75rem auto 0; max-width: 620px;">
+        Connect with <strong class="shai-inline-brand">SHAI</strong> to develop custom digital platforms, brand identity, or growth infrastructure tailored to your vision.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT GRID SECTION -->
+  <main class="container">
+    <div class="contact-grid-container">
+      
+      <!-- Left Column: Details & Guarantees -->
+      <div class="contact-card">
+        <span class="section-label" style="color: #38bdf8;">DIRECT CHANNELS</span>
+        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: #ffffff; margin: 0.5rem 0 1rem;">Direct Contact</h3>
+        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
+          Every partnership begins with a direct conversation. Reach out via email, review our repos, or explore our active portfolio systems.
+        </p>
+
+        <div class="contact-detail-group">
+          <div class="detail-item">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Harrismith, Free State & Remote</span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Direct Email</span>
+            <span class="detail-value"><a href="mailto:shaitokelo7@gmail.com">shaitokelo7@gmail.com</a></span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Online Portfolio</span>
+            <span class="detail-value"><a href="https://shaitkv.online" target="_blank" rel="noopener">shaitkv.online</a></span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">GitHub Repository</span>
+            <span class="detail-value"><a href="https://github.com/shaitkv" target="_blank" rel="noopener">github.com/shaitkv</a></span>
+          </div>
+        </div>
+
+        <div class="expectation-box">
+          <h4>Direct Response Expectation</h4>
+          <p>
+            Inquiries submitted via this form route directly to my inbox using EmailJS. Expect a direct response within 24 business hours.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Contact Form -->
+      <div class="contact-card">
+        <span class="detail-label" style="margin-bottom: 0.75rem;">SELECT SERVICE AREA</span>
+        
+        <div class="service-chips-wrapper">
+          <button type="button" class="chip-btn" onclick="selectService(this, 'Web Platform & Portals')">Web Platforms</button>
+          <button type="button" class="chip-btn" onclick="selectService(this, 'Brand Identity & Design')">Brand Identity</button>
+          <button type="button" class="chip-btn" onclick="selectService(this, 'Social & Growth Marketing')">Marketing</button>
+          <button type="button" class="chip-btn" onclick="selectService(this, 'IT & Technical Systems')">IT Support</button>
+          <button type="button" class="chip-btn" onclick="selectService(this, 'General Inquiry')">General</button>
+        </div>
+
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" name="user_name" placeholder="e.g. John Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" name="user_email" placeholder="e.g. john@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="Select a service above or enter a title" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Project Details & Requirements</label>
+            <textarea id="contactMessage" name="message" rows="5" placeholder="Describe your project, objectives, or timeline..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+          
+          <div class="form-status-alert" id="statusAlert"></div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-wrapper">
+        <div style="opacity: 0.85;">
+          &copy; All rights reserved by <span class="shai-inline-brand">SHAI</span>. Built to outlive the moment.
+        </div>
+        
+        <div class="footer-socials">
+          <a href="#" class="social-icon-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-icon-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://github.com/shaitkv" target="_blank" class="social-icon-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Page Interactive Script -->
+  <script>
+    function selectService(btnElement, serviceName) {
+      const subjectInput = document.getElementById('contactSubject');
+      if (subjectInput) {
+        subjectInput.value = serviceName + " - Inquiry";
+        subjectInput.focus();
+      }
+      
+      const chips = document.querySelectorAll('.chip-btn');
+      chips.forEach(chip => chip.classList.remove('active'));
+      btnElement.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const statusAlert = document.getElementById('statusAlert');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Transmitting Message...";
+          statusAlert.className = "form-status-alert";
+
+          emailjs.sendForm('service_default', 'template_default', this)
+            .then(() => {
+              statusAlert.textContent = "Thank you! Your inquiry has been delivered directly to my inbox.";
+              statusAlert.classList.add("success");
+              contactForm.reset();
+              document.querySelectorAll('.chip-btn').forEach(c => c.classList.remove('active'));
+            })
+            .catch((error) => {
+              console.error("EmailJS Error:", error);
+              statusAlert.textContent = "Unable to send message automatically. Please contact me directly at shaitokelo7@gmail.com.";
+              statusAlert.classList.add("error");
+            })
+            .finally(() => {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Send Message";
+            });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

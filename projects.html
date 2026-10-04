@@ -10,8 +10,133 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    /* Admin Controls Styling */
+    .admin-bar {
+      display: none;
+      background: rgba(20, 20, 25, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.75rem 0;
+      backdrop-filter: blur(10px);
+    }
+    .admin-bar.active {
+      display: block;
+    }
+    .admin-bar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #10b981;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .admin-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+    .admin-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn-admin {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .btn-admin:hover {
+      background: #1d4ed8;
+    }
+    .btn-admin-danger {
+      background: #dc2626;
+    }
+    .btn-admin-danger:hover {
+      background: #b91c1c;
+    }
+    /* Modal styles for Add/Edit Project */
+    .admin-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .admin-modal.open {
+      display: flex;
+    }
+    .admin-modal-card {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 600px;
+      padding: 1.5rem;
+      color: #f4f4f5;
+    }
+    .admin-modal-card h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .admin-form-group {
+      margin-bottom: 1rem;
+    }
+    .admin-form-group label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.35rem;
+      color: #a1a1aa;
+    }
+    .admin-form-group input,
+    .admin-form-group select,
+    .admin-form-group textarea {
+      width: 100%;
+      padding: 0.5rem;
+      background: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 4px;
+      color: #fff;
+      font-family: inherit;
+    }
+    .admin-form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Admin Bar Header -->
+  <div class="admin-bar" id="adminBar">
+    <div class="container admin-bar-content">
+      <span class="admin-badge">Admin Session Active</span>
+      <div class="admin-actions">
+        <button class="btn-admin" id="openAddProjectModal">+ Add Project</button>
+        <button class="btn-admin btn-admin-danger" id="adminLogoutBtn">Logout</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Ambient Interactive Glow -->
   <div class="cursor-glow" id="cursorGlow"></div>
@@ -23,14 +148,15 @@
         <img src="https://raw.githubusercontent.com/shaitkv/shaitkv.github.io/main/favicon.ico" alt="TS Emblem" class="shai-emblem-img" onerror="this.style.display='none'">
         <div class="brand-text-stack">
           <span class="brand-wordmark">SHAI</span>
-          <span class="brand-tagline">DIGITAL ARCHITECTURE</span>
+          <span class="brand-tagline">ENGINEERED ELEGANCE</span>
         </div>
       </a>
 
       <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="projects.html" class="nav-link nav-link-active">Work</a></li>
-        <li><a href="index.html#contact" class="nav-link nav-link-cta">Start Consultation</a></li>
+        <li><a href="index.html#services" class="nav-link">Services</a></li>
+        <li><a href="projects.html" class="nav-link nav-link-active">Projects</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-link nav-link-cta">Contact</a></li>
       </ul>
 
       <button class="burger-menu-btn" id="burgerBtn" aria-label="Toggle Navigation">
@@ -47,9 +173,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
     <div class="mobile-nav-content">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="projects.html" class="mobile-nav-link">Work</a>
-      <a href="index.html#contact" class="mobile-nav-link mobile-nav-cta">Start Consultation</a>
+      <a href="index.html#services" class="mobile-nav-link">Services</a>
+      <a href="projects.html" class="mobile-nav-link">Projects</a>
+      <a href="blog.html" class="mobile-nav-link">Blog</a>
+      <a href="index.html#contact" class="mobile-nav-link mobile-nav-cta">Contact</a>
     </div>
   </div>
 
@@ -97,18 +224,94 @@
     </div>
   </section>
 
+  <!-- Admin Modal for Adding/Editing Projects -->
+  <div class="admin-modal" id="projectModal">
+    <div class="admin-modal-card">
+      <h2 id="modalTitle">Manage Project</h2>
+      <form id="projectForm">
+        <input type="hidden" id="projectId">
+        <div class="admin-form-group">
+          <label for="projectTitle">Project Title</label>
+          <input type="text" id="projectTitle" required>
+        </div>
+        <div class="admin-form-group">
+          <label for="projectCategory">Category</label>
+          <select id="projectCategory" required>
+            <option value="website">Website</option>
+            <option value="application">Application</option>
+            <option value="business-card">Business Card</option>
+            <option value="poster">Poster & Print</option>
+          </select>
+        </div>
+        <div class="admin-form-group">
+          <label for="projectDescription">Description</label>
+          <textarea id="projectDescription" rows="3" required></textarea>
+        </div>
+        <div class="admin-form-group">
+          <label for="projectImage">Image URL</label>
+          <input type="text" id="projectImage" required>
+        </div>
+        <div class="admin-form-group">
+          <label for="projectLink">Live/Target URL</label>
+          <input type="text" id="projectLink">
+        </div>
+        <div class="admin-form-actions">
+          <button type="button" class="btn-admin btn-admin-danger" id="closeModalBtn">Cancel</button>
+          <button type="submit" class="btn-admin">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container footer-wrapper">
       <div>&copy; 2026 Tokelo Shai. All rights reserved.</div>
       <div class="footer-socials">
         <a href="index.html#contact" class="social-icon-link">Contact</a>
-        <a href="shaitkv.online" target="_blank" rel="noopener" class="social-icon-link">GitHub</a>
+        <a href="https://github.com/shaitkv" target="_blank" rel="noopener" class="social-icon-link">GitHub</a>
       </div>
     </div>
   </footer>
 
   <!-- Application Logic -->
-  <script src="Assets/js/projects.js"></script>
+  <script src="assets/js/projects.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const isAdmin = localStorage.getItem('isAdmin') === 'true';
+      const adminBar = document.getElementById('adminBar');
+
+      if (isAdmin && adminBar) {
+        adminBar.classList.add('active');
+      }
+
+      const logoutBtn = document.getElementById('adminLogoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('isAdmin');
+          window.location.reload();
+        });
+      }
+
+      const modal = document.getElementById('projectModal');
+      const openAddBtn = document.getElementById('openAddProjectModal');
+      const closeBtn = document.getElementById('closeModalBtn');
+
+      if (openAddBtn) {
+        openAddBtn.addEventListener('click', () => {
+          document.getElementById('projectForm').reset();
+          document.getElementById('projectId').value = '';
+          document.getElementById('modalTitle').textContent = 'Add New Project';
+          modal.classList.add('open');
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          modal.classList.remove('open');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
